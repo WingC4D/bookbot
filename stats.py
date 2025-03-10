@@ -1,9 +1,11 @@
-def get_book_text(filepath):
-    with open(filepath) as f:
-        return f.read()
-def main():
-    booktext = get_book_text("books/frankenstein.txt")
-    words = booktext.split()
-    print(f"{len(words)} words found in the document")
+def main(filepath):
+    try:
+        with open(filepath) as f:
+            booktext = f.read()
+            words = booktext.split()
+            print(f"{len(words)} words found in the document")
+    except FileNotFoundError:
+        print(f"Error: The file '{filepath}' was not found. Double-check the file path and ensure it exists")
+    return
 if __name__ == "__main__":
-    main()
+    main("books/frankenstein.txt")
