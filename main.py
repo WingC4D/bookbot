@@ -1,6 +1,4 @@
-from stats import letter_count 
-import inspect
-print(inspect.getsource(letter_count))  
+from stats import letter_count, sort_characters
 def main(filepath):
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {filepath}")
@@ -10,9 +8,13 @@ def main(filepath):
             booktext = f.read()
             letters_dict = letter_count(booktext)
             words_lst = booktext.split()
-            print(f"found {len(words_lst)} total words")   
+            print(f"Found {len(words_lst)} total words")   
             print("--------- Character Count -------")
-            print(letters_dict)
+            char_list = sort_characters(letters_dict)
+            for char_info in char_list:
+                char = char_info["char"]
+                count = char_info["count"]
+                print(f"{char}: {count}")
     except FileNotFoundError:
         print(f"Error: The file '{filepath}' was not found. Double-check the file path and ensure it exists")
     return
