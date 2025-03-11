@@ -18,7 +18,7 @@ def main():
             print("--------- Character Count -------")
             char_list = sort_characters(letters_dict)
             for char_info in char_list:
-                print(f"{char_info["char"]}: {char_info["count"]}")
+                print(f"{char_info['char']}: {char_info['count']}")
     except FileNotFoundError:
         print(f"Error: The file '{filepath}' was not found. Double-check the file path and ensure it exists")
         sys.exit(1)
